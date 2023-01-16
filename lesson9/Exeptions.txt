@@ -1,0 +1,2 @@
+[Errno 2] No such file or directory: 'scond.txt', time: 2023-01-15 16:28:55.803825
+[Errno 2] No such file or directory: 'thrd.txt', time: 2023-01-15 16:30:49.195367

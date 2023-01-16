@@ -1,0 +1,2 @@
+1, treasure, someone, 1000
+2, island, someone, 2000
