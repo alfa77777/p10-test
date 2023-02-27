@@ -49,6 +49,12 @@ GROUP BY customer_id HAVING MAX(purch_amt)>1000
 SELECT COUNT(*) FROM salesman 
 WHERE city IS NOT NULL
 ```
+## 20-task
+![image](https://user-images.githubusercontent.com/122611622/221525419-4bb88cc5-30d0-4a0c-9ba3-ae155c32dc48.png)
+
+```sql
+SELECT ord_date,salesman_id,COUNT(*) FROM orders GROUP BY ord_date,salesman_id
+```
 ## 21-task
 ![image](https://user-images.githubusercontent.com/122611622/221523318-65552a6b-b5cc-4c86-bc5d-034c525e2235.png)
 
