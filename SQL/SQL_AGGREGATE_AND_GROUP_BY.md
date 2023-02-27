@@ -49,10 +49,37 @@ GROUP BY customer_id HAVING MAX(purch_amt)>1000
 SELECT COUNT(*) FROM salesman 
 WHERE city IS NOT NULL
 ```
+## 21-task
+![image](https://user-images.githubusercontent.com/122611622/221523318-65552a6b-b5cc-4c86-bc5d-034c525e2235.png)
+
+```sql
+SELECT AVG(pro_price) AS "Average Price" 
+FROM item_mast
+```
 ## 22-task
 ![image](https://user-images.githubusercontent.com/122611622/221422116-a367d6b2-d392-42b6-ac1c-75ca7d25e272.png)
 
 ```sql
 SELECT COUNT(*) AS "Number of Products" 
 FROM item_mast WHERE pro_price >= 350
+```
+## 23-task
+![image](https://user-images.githubusercontent.com/122611622/221522822-da4e8e3b-68ba-47cf-a067-7b7f770a1065.png)
+
+```sql
+SELECT AVG(pro_price) AS "Average Price", pro_com AS "Company ID" FROM item_mast GROUP BY pro_com
+```
+## 24-task
+![image](https://user-images.githubusercontent.com/122611622/221498996-6e9cf9dd-ad97-469a-9651-0150f57d1590.png)
+
+```sql
+SELECT SUM(dpt_allotment) 
+FROM emp_department
+```
+## 25-task
+![image](https://user-images.githubusercontent.com/122611622/221497973-3263a488-61a1-4ebb-ae62-894e48b46b89.png)
+
+```sql
+SELECT emp_dept, COUNT(*) 
+FROM emp_details GROUP BY emp_dep
 ```
