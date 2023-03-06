@@ -34,6 +34,9 @@ for board in boards:
     cur.execute("""
         INSERT INTO board (id, name)
         VALUES (%s, %s)
+        ON CONFLICT (id) DO UPDATE
+        SET id = EXCLUDED.id, name = EXCLUDED.name
+        RETURNING id;
     """, [board_id, board_name])
 
     # Retrieve the lists for the board from the Trello API
@@ -67,7 +70,7 @@ for board in boards:
             # card_created_at = datetime.strptime(card["dateCreated"], "%Y-%m-%dT%H:%M:%S.%fZ")
             # card_updated_at = datetime.strptime(card["dateLastActivity"], "%Y-%m-%dT%H:%M:%S.%fZ")
             cur.execute("""
-                INSERT INTO card (id, name, description, list_id)
+                INSERT INTO  card (id, name, description, list_id)
                 VALUES (%s, %s, %s, %s)
             """, [card_id, card_name, card_description, card_list_id])
 
@@ -85,9 +88,9 @@ for board in boards:
                     VALUES (%s, %s)
                 """, [member_id, member_full_name])
 
-    # Commit the changes to the database
-    conn.commit()
+# Commit the changes to the database
+conn.commit()
 
-    # Close the cursor and connection to the database
-    cur.close()
-    conn.close()
+# Close the cursor and connection to the database
+cur.close()
+conn.close()
