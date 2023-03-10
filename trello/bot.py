@@ -60,6 +60,27 @@ def get_trello_username(message):
         bot.send_message(message.chat.id, "Muvaffaqqiyatli qo'shildi")
 
 
+@bot.message_handler(commands=["update_trello_username"])
+def update_tr_username(message):
+    bot.send_message(message.chat.id, "Yangi username kiriting:")
+    bot.register_next_step_handler(message, con_up_username)
+
+
+def con_up_username(message):
+    username = get_column_info("users", "username")
+    if message.text in username:
+        bot.send_message(message.chat.id, "Bu user name mavjud! qayta urinib ko'ring /update_trello_username")
+    else:
+        put_trello_username(message.chat.id, message.text)
+        set_fullname(message, message.chat.id)
+        try:
+            member_id = get_member_id(message.text)
+            put_trello_member_id(message.text, member_id)
+        except Exception:
+            pass
+        bot.send_message(message.chat.id, "Muvaffaqqiyatli yangilandi")
+
+
 @bot.message_handler(commands=["boards"])
 def get_boards(message):
 
@@ -106,7 +127,8 @@ my_commands = [
     telebot.types.BotCommand("/start", "Boshlash"),
     telebot.types.BotCommand("/register", "Ro'yxatdan o'tish"),
     telebot.types.BotCommand("/boards", "Doskalarni ko'rish"),
-    telebot.types.BotCommand("/update", "Database ma'lumotlarini yangilash")
+    telebot.types.BotCommand("/update", "Database ma'lumotlarini yangilash"),
+    telebot.types.BotCommand("/update_trello_username", "Trello username yangilash")
 ]
 
 if __name__ == "__main__":
