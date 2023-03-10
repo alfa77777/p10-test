@@ -94,4 +94,12 @@ result after pressing /boards command
 
 # update
 result after pressing /update command
-![image](https://user-images.githubusercontent.com/122611622/224290793-2b6ccf6d-81b2-4e49-b07d-c4f75b93e0a3.png)
+![image](https://user-images.githubusercontent.com/122611622/224304014-5a322073-b0df-4fbf-b37f-d5abcb4dd9f9.png)
+![image](https://user-images.githubusercontent.com/122611622/224304166-aba02a2c-d242-4e49-82a2-af8eb021b8a4.png)
+
+# update trello username
+result after pressing /update_trello_username command
+## if exist
+![image](https://user-images.githubusercontent.com/122611622/224303610-433e889d-b48e-4d69-979b-e8d498674d82.png)
+## else
+![image](https://user-images.githubusercontent.com/122611622/224303736-6fa440f5-1331-4d10-83e9-b54acfe7ccae.png)
