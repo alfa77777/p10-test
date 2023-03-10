@@ -93,12 +93,13 @@ def get_member_cards(call):
 
 @bot.message_handler(commands=["update"])
 def update(message):
-    bot.send_message(message.chat.id, "Biroz kuting yangilanmoqda!")
+    send_message = bot.send_message(message.chat.id, "Biroz kuting yangilanmoqda!")
     try:
         update_database()
-        bot.send_message(message.chat.id, "Database yangilandi!")
+        bot.edit_message_text(chat_id=message.chat.id, message_id=send_message.message_id, text="Database yangilandi!")
     except Exception:
-        bot.send_message(message.chat.id, "Database yangilanmadi")
+        bot.edit_message_text(chat_id=message.chat.id, message_id=send_message.message_id,
+                              text="Database yangilanmadi.")
 
 
 my_commands = [
