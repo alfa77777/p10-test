@@ -172,14 +172,39 @@ def update_database():
                     else:
                         member_id = result[0]
 
-                    # Associate the member with the card in the database
-                    cur.execute("""
-                        INSERT INTO cards_members (card_id, member_id)
-                        VALUES (%s, %s)
-                    """, [card_id, member_id])
+                    try:
+                        cur.execute("""
+                            INSERT INTO boards_members (board_id, member_id)
+                            VALUES (%s, %s)
+                        """, [board_id, member_id])
 
-                    conn.commit()
+                        conn.commit()
+                    except Exception as e:
+                        conn.rollback()
+                        print("Error occurred:", e)
 
-    # Close the cursor and connection to the database
+                    try:
+                        cur.execute("""
+                            INSERT INTO lists_members (list_id, member_id)
+                            VALUES (%s, %s)
+                        """, [list_id, member_id])
+
+                        conn.commit()
+                    except Exception as e:
+                        conn.rollback()
+                        print("Error occurred:", e)
+
+                    try:
+                        cur.execute("""
+                            INSERT INTO cards_members (card_id, member_id)
+                            VALUES (%s, %s)
+                        """, [card_id, member_id])
+
+                        conn.commit()
+                    except Exception as e:
+                        conn.rollback()
+                        print("Error occurred:", e)
+
     cur.close()
     conn.close()
+update_database()
